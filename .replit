@@ -1,5 +1,5 @@
 run = "npm run dev"
-modules = ["web", "nodejs-18", "cpp-clang14", "python-3.12"]
+modules = ["nodejs-18", "web", "cpp-clang14", "python-3.12"]
 [workflows]
 runButton = "Run DMCA Quantum Server"
 
