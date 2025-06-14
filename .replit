@@ -1,1 +1,12 @@
+[workflows]
+runButton = "Run DMCA Quantum Server"
+
+[[workflows.workflow]]
+name = "Run DMCA Quantum Server"
+author = 43843938
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node server.js"
 
