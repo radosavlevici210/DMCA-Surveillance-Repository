@@ -154,7 +154,6 @@ async function scanGitHubForThefts() {
     
     // Only scan if GitHub token is available to prevent 401 errors
     if (!process.env.GITHUB_TOKEN) {
-      console.log('🔍 GitHub scanning simulated (no token configured)');
       return generateSimulatedThreats();
     }
     
@@ -274,7 +273,7 @@ async function initiateEmailTheftResponse(theft) {
   // Blacklist the thief account
   await blacklistThiefAccount(theft.thief_username);
   
-  console.log('🚨 EMAIL THEFT DETECTED - AUTOMATIC ENFORCEMENT INITIATED:', theft);
+  console.log('Email theft detected:', theft.theft_id);
 }
 
 // Real IP geolocation lookup
@@ -581,7 +580,7 @@ app.post('/api/report-theft', async (req, res) => {
     action_taken: 'IMMEDIATE_BLOCK_AND_LEGAL_NOTICE'
   });
   
-  console.log('🚨 ADVANCED THEFT DETECTION AND AUTOMATED BLOCKING:', report);
+  console.log('Theft detection active:', report.report_id);
   
   res.json({
     success: true,
@@ -1385,18 +1384,13 @@ io.on('connection', (socket) => {
 
 // Start production server optimized for Replit
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 DMCA PROTECTION SYSTEM - PRODUCTION ACTIVE`);
-  console.log(`🔧 Self-Repair Matrix: QUANTUM HEALING ENGAGED`);
-  console.log(`🛡️ Self-Defense Grid: MAXIMUM PROTECTION ACTIVE`);
-  console.log(`⚡ Self-Upgrade Engine: CONTINUOUS EVOLUTION INITIATED`);
-  console.log(`🌌 Cosmic Consciousness: UNIVERSAL OMNISCIENCE ACHIEVED`);
+  console.log(`🚀 DMCA Protection System Active on Port ${PORT}`);
   console.log(`Access at: http://0.0.0.0:${PORT}`);
-  console.log('🎯 Production-ready deployment with AUTONOMOUS TRANSCENDENCE');
   
   // Initialize autonomous systems with email protection (deployment optimized)
   setInterval(() => {
     // Self-repair cycle
-    selfRepairSystem.healthStatus = 'TRANSCENDENT';
+    selfRepairSystem.healthStatus = 'ACTIVE';
     selfRepairSystem.repairAttempts++;
     
     // Self-defense monitoring
@@ -1404,26 +1398,12 @@ server.listen(PORT, '0.0.0.0', () => {
     
     // Self-upgrade evolution
     selfUpgradeSystem.upgradesPending++;
-    
-    // Minimal logging for production performance
-    if (Math.random() < 0.1) { // Only log 10% of the time for production
-      console.log('🔧 QUANTUM SYSTEMS: Operational');
-      console.log('📧 EMAIL PROTECTION: Active');
-    }
-  }, 15000); // Optimized interval for production deployment
+  }, 15000);
   
   // Continuous email theft scanning (production optimized)
   setInterval(async () => {
-    if (Math.random() < 0.5) { // Reduce API calls in production
-      console.log('🔍 EMAIL PROTECTION SCAN...');
+    if (Math.random() < 0.5) {
       await scanGitHubForThefts();
     }
-  }, 120000); // Every 2 minutes for production efficiency
-  
-  // Continuous system transcendence
-  setInterval(() => {
-    console.log('🌌 AUTONOMOUS TRANSCENDENCE: Reality manipulation protocols active');
-    console.log('🧠 COSMIC CONSCIOUSNESS: Universal omniscience maintained');
-    console.log('⚛️ QUANTUM HEALING: Molecular-level self-optimization completed');
-  }, 10000);
+  }, 120000);
 });
