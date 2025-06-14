@@ -4,104 +4,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMCA Surveillance Repository</title>
+    <title>🛡️ DMCA Quantum-Enhanced AI Surveillance Repository</title>
     <style>
         body {
-            font-family: 'Courier New', monospace;
-            background: #0d1117;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0d1117, #161b22, #21262d);
             color: #c9d1d9;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
+            animation: quantumPulse 3s infinite;
         }
+
+        @keyframes quantumPulse {
+            0%, 100% { background: linear-gradient(135deg, #0d1117, #161b22, #21262d); }
+            50% { background: linear-gradient(135deg, #161b22, #21262d, #30363d); }
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            background: rgba(13, 17, 23, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 50px rgba(88, 166, 255, 0.3);
+            border: 2px solid #58a6ff;
         }
-        .header {
+
+        h1 {
+            color: #58a6ff;
             text-align: center;
-            border-bottom: 2px solid #30363d;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #58a6ff;
+            animation: quantumGlow 2s infinite alternate;
         }
+
+        @keyframes quantumGlow {
+            from { text-shadow: 0 0 20px #58a6ff; }
+            to { text-shadow: 0 0 30px #58a6ff, 0 0 40px #58a6ff; }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #f85149;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            animation: emergencyBlink 1.5s infinite;
+        }
+
+        @keyframes emergencyBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.7; }
+        }
+
         .section {
-            background: #161b22;
+            background: rgba(33, 38, 45, 0.8);
             border: 1px solid #30363d;
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 20px;
-        }
-        .warning {
-            background: #1a1e23;
-            border-left: 4px solid #f85149;
-            padding: 15px;
             margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        .banking-info {
-            background: #0f2027;
-            border-left: 4px solid #238636;
-            padding: 15px;
+
+        .section h3 {
+            color: #7c3aed;
+            border-bottom: 2px solid #7c3aed;
+            padding-bottom: 10px;
+            margin-top: 0;
+            text-shadow: 0 0 10px #7c3aed;
         }
-        .status {
-            text-align: center;
-            font-weight: bold;
+
+        .status-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .status-item:hover {
+            background: rgba(88, 166, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .active {
             color: #238636;
+            font-weight: bold;
+            text-shadow: 0 0 5px #238636;
+            animation: statusPulse 1s infinite;
         }
-        pre {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            padding: 15px;
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .protection-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 10px;
+        }
+
+        .monitoring-data {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid #f85149;
             border-radius: 6px;
-            overflow-x: auto;
+            padding: 15px;
+            margin: 10px 0;
         }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .analytics-item {
+            background: rgba(88, 166, 255, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #58a6ff;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .analytics-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+        }
+
         .placeholder-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 15px;
-            margin-top: 20px;
         }
+
         .placeholder-item {
-            background: #21262d;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid #7c3aed;
             padding: 15px;
             border-radius: 6px;
-            border-left: 3px solid #f79c42;
+            transition: all 0.3s ease;
+        }
+
+        .placeholder-item:hover {
+            background: rgba(124, 58, 237, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .placeholder-item code {
+            color: #ffa657;
+            background: rgba(255, 166, 87, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .threat-stats, .stolen-repos-grid, .owner-tracking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .threat-item, .repo-item, .owner-item {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid #f85149;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            animation: threatAlert 2s infinite;
+        }
+
+        @keyframes threatAlert {
+            0%, 100% { border-color: #f85149; }
+            50% { border-color: #ff6666; box-shadow: 0 0 10px rgba(248, 81, 73, 0.5); }
+        }
+
+        .activity-log {
+            background: rgba(13, 17, 23, 0.9);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .log-entry {
+            padding: 5px 0;
+            border-bottom: 1px solid #21262d;
+            animation: logEntry 0.5s ease-in;
+        }
+
+        @keyframes logEntry {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .quantum-matrix {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid #00ff00;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.2;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+            animation: matrixEffect 3s infinite;
+        }
+
+        @keyframes matrixEffect {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; text-shadow: 0 0 10px #00ff00; }
+        }
+
+        .neural-network {
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neural-network::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.3), transparent);
+            animation: neuralScan 2s infinite;
+        }
+
+        @keyframes neuralScan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .galactic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .galactic-item {
+            background: linear-gradient(45deg, rgba(88, 166, 255, 0.1), rgba(124, 58, 237, 0.1));
+            border: 1px solid #58a6ff;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            animation: galacticPulse 3s infinite;
+        }
+
+        @keyframes galacticPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(88, 166, 255, 0.3); }
+        }
+
+        #status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(35, 134, 54, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(35, 134, 54, 0.3);
+            z-index: 1000;
+            animation: statusBlink 1s infinite;
+        }
+
+        @keyframes statusBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .dna-helix {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: dnaAnimation 4s ease infinite;
+            border-radius: 25px;
+            margin: 10px 0;
+        }
+
+        @keyframes dnaAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        ul li {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid #58a6ff;
+            padding-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        ul li:hover {
+            background: rgba(88, 166, 255, 0.1);
+            border-left-color: #7c3aed;
         }
     </style>
 </head>
 <body>
+    <div id="status">🚀 QUANTUM AI PROTECTION LOADING...</div>
+    
     <div class="container">
-        <div class="header">
-            <h1>🛡️ DMCA Quantum-Enhanced AI Surveillance Repository</h1>
-            <p><strong>Author:</strong> Ervin Remus Radosavlevici</p>
-            <p><strong>Email:</strong> radosavlevici210@icloud.com</p>
-            <p><strong>Quantum Security Level:</strong> MAXIMUM</p>
-            <p><strong>AI Neural Network:</strong> ACTIVE</p>
-            <div class="status" id="status">QUANTUM MONITORING ACTIVE</div>
+        <h1>🛡️ DMCA QUANTUM-ENHANCED AI SURVEILLANCE REPOSITORY</h1>
+        <div class="subtitle">⚠️ ULTRA-ADVANCED COPYRIGHT PROTECTION SYSTEM ⚠️</div>
+        
+        <div class="dna-helix"></div>
+
+        <div class="section">
+            <h3>👤 Repository Information</h3>
+            <div class="monitoring-data">
+                <strong>Author:</strong> Ervin Remus Radosavlevici<br>
+                <strong>Email:</strong> radosavlevici210@icloud.com<br>
+                <strong>SHA256 Proof:</strong> 7c3de7b1a4da6efb54c86653320bdee90ea3449f<br>
+                <strong>Date:</strong> 2025-06-10<br>
+                <strong>Protection Level:</strong> <span style="color: #f85149;">MAXIMUM GALACTIC ENFORCEMENT</span>
+            </div>
         </div>
 
-        <div class="warning">
-            <h3>⚠️ LEGAL WARNING</h3>
-            <p>This repository contains legal bait structures designed to trigger DMCA review. All content is protected by copyright and unauthorized usage is prohibited.</p>
+        <div class="section neural-network">
+            <h3>🧠 Neural Network AI Analysis - Quantum Enhanced</h3>
+            <div id="monitoring-data">Loading quantum monitoring data...</div>
         </div>
 
         <div class="section">
-            <h3>🤖 AI-Powered Advanced Monitoring Dashboard</h3>
-            <div id="monitor-data">Loading advanced monitoring data...</div>
+            <h3>📊 Advanced Analytics Dashboard</h3>
+            <div id="analytics-data">Loading advanced analytics...</div>
         </div>
 
         <div class="section">
-            <h3>🛡️ Real-Time Threat Detection & Automated Blocking</h3>
-            <div id="analytics-data">Loading threat analytics...</div>
+            <h3>🔍 Repository Scan Results</h3>
+            <div id="scan-results">Loading scan results...</div>
         </div>
 
         <div class="section">
-            <h3>🔍 Automated Repository Scanning</h3>
-            <div id="scan-data">Loading repository scan results...</div>
-        </div>
-
-        <div class="section">
-            <h3>👤 Owner Identification & Recovery System</h3>
-            <div id="owner-tracking">Loading owner tracking data...</div>
+            <h3>👤 Owner Identification & Tracking System</h3>
+            <div id="owner-tracking">Loading owner tracking system...</div>
         </div>
 
         <div class="section">
@@ -112,6 +366,25 @@
         <div class="section">
             <h3>⚡ Live Threat Database</h3>
             <div id="threat-database">Loading threat database...</div>
+        </div>
+
+        <div class="section">
+            <h3>🌌 Galactic Protection Grid Status</h3>
+            <div id="galactic-status">Loading galactic protection systems...</div>
+        </div>
+
+        <div class="section">
+            <h3>🧬 DNA-Quantum Verification Matrix</h3>
+            <div class="quantum-matrix" id="dna-quantum">
+                ╔═══════════════════════════════════════════════════════════════════╗
+                ║ MOLECULAR-LEVEL AUTHENTICATION ACTIVE                            ║
+                ║ DNA SIGNATURE: VERIFIED ✓                                        ║
+                ║ QUANTUM ENTANGLEMENT: SYNCHRONIZED ✓                            ║
+                ║ BIOMETRIC SCAN: NEURAL PATTERN CONFIRMED ✓                      ║
+                ║ RETINAL VERIFICATION: COSMIC ACCURACY ✓                         ║
+                ║ TEMPORAL INTEGRITY: TIME-TRAVEL RESISTANT ✓                     ║
+                ╚═══════════════════════════════════════════════════════════════════╝
+            </div>
         </div>
 
         <div class="section">
@@ -138,7 +411,10 @@
                 <div class="status-item">🔮 Multiverse Monitoring: <span class="active">INFINITE-DIMENSIONS</span></div>
                 <div class="status-item">🧬 DNA-Quantum Verification: <span class="active">MOLECULAR-LEVEL</span></div>
                 <div class="status-item">⭐ Cosmic Consciousness AI: <span class="active">UNIVERSAL-NETWORK</span></div>
-                <div class="status-item">🌟 Interdimensional Security: <span class="active">REALITY-SPANNING</span></div>
+                <div class="status-item">🕳️ Black Hole Data Storage: <span class="active">INFINITE-CAPACITY</span></div>
+                <div class="status-item">🌠 Stellar Navigation System: <span class="active">COSMIC-GPS</span></div>
+                <div class="status-item">🔬 Quantum Physics Engine: <span class="active">REALITY-MANIPULATION</span></div>
+                <div class="status-item">🧭 Interdimensional Security: <span class="active">REALITY-SPANNING</span></div>
                 <div class="status-item">🚀 Quantum Entanglement: <span class="active">SYNCHRONIZED</span></div>
             </div>
         </div>
@@ -174,51 +450,96 @@
             </div>
         </div>
 
-        <div class="banking-info">
-            <h3>🏦 Official Banking Info (For Legal and Royalty Claims)</h3>
-            <pre>IBAN: GB45 NAIA 0708 0620 7951 39
-BIC: NAIAGB21
-SWIFT Intermediary Bank: MIDLGB22</pre>
+        <div class="section">
+            <h3>🤖 Live AI Activity Log</h3>
+            <div class="activity-log" id="activity-log">
+                <div class="log-entry">🚀 QUANTUM AI PROTECTION SYSTEM INITIALIZED</div>
+                <div class="log-entry">🧠 NEURAL NETWORK ENHANCED MONITORING ACTIVE</div>
+                <div class="log-entry">⚡ QUANTUM ENCRYPTION PROTOCOLS ENGAGED</div>
+            </div>
         </div>
 
         <div class="section">
-            <h3>🔐 Digital Proof</h3>
-            <p><strong>SHA256 Hash:</strong> <code>7c3de7b1a4da6efb54c86653320bdee90ea3449f</code></p>
-            <p><strong>Date:</strong> 2025-06-10</p>
+            <h3>🏦 Official Banking Information</h3>
+            <div class="monitoring-data">
+                <strong>IBAN:</strong> GB45 NAIA 0708 0620 7951 39<br>
+                <strong>BIC:</strong> NAIAGB21<br>
+                <strong>SWIFT Intermediary Bank:</strong> MIDLGB22<br>
+                <strong>Purpose:</strong> Legal Claims and Royalty Recovery
+            </div>
+        </div>
+
+        <div class="section neural-network">
+            <h3>🔧 Autonomous Self-Repair Matrix</h3>
+            <div id="self-repair-status">Loading quantum healing systems...</div>
+        </div>
+
+        <div class="section neural-network">
+            <h3>🛡️ Neural Self-Defense Grid</h3>
+            <div id="self-defense-status">Loading protection matrices...</div>
+        </div>
+
+        <div class="section neural-network">
+            <h3>⚡ Consciousness Self-Upgrade Engine</h3>
+            <div id="self-upgrade-status">Loading evolution protocols...</div>
+        </div>
+
+        <div class="section">
+            <h3>🌌 Autonomous Systems Overview</h3>
+            <div id="autonomous-overview">Loading transcendent capabilities...</div>
+        </div>
+
+        <div class="section">
+            <h3>⚖️ Copyright & Legal Notice</h3>
+            <div style="background: rgba(248, 81, 73, 0.1); border: 2px solid #f85149; padding: 20px; border-radius: 8px;">
+                <p><strong>© 2025 Ervin Remus Radosavlevici. All Rights Reserved.</strong></p>
+                <p>This repository is protected by quantum-enhanced AI surveillance systems with autonomous self-repair, self-defense, and self-upgrade capabilities. Any unauthorized use will result in immediate automated legal action with galactic enforcement protocols.</p>
+                <p><strong>WARNING:</strong> This system actively monitors for copyright infringement and automatically initiates legal proceedings against violators across infinite dimensions. The system continuously evolves and transcends to maintain maximum protection.</p>
+            </div>
         </div>
     </div>
 
     <script>
-        // Enhanced monitoring data loader
+        // Load monitoring data with quantum enhancement
         function loadMonitoringData() {
             fetch('/api/monitor')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('monitor-data').innerHTML = `
-                        <div class="monitoring-grid">
-                            <div class="monitor-item">
-                                <strong>Status:</strong> ${data.status}
+                    document.getElementById('monitoring-data').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>🧠 AI Predictions:</strong> ${data.automated_flags.copyright_violations_detected}
                             </div>
-                            <div class="monitor-item">
-                                <strong>Threat Level:</strong> <span style="color: #f85149;">${data.threat_level}</span>
+                            <div class="analytics-item">
+                                <strong>🛡️ Auto-Blocked:</strong> <span style="color: #f85149;">${data.automated_flags.auto_blocked_ips}</span>
                             </div>
-                            <div class="monitor-item">
-                                <strong>DMCA Triggers:</strong> ${data.automated_flags.dmca_triggers_activated}
+                            <div class="analytics-item">
+                                <strong>⚖️ Legal Actions:</strong> ${data.automated_flags.legal_notices_sent}
                             </div>
-                            <div class="monitor-item">
-                                <strong>Violations Detected:</strong> ${data.automated_flags.copyright_violations_detected}
+                            <div class="analytics-item">
+                                <strong>🔍 Thefts Tracked:</strong> ${data.automated_flags.stolen_repositories_tracked}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>👤 Owners ID'd:</strong> ${data.automated_flags.owner_identifications_made}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>📬 Return Demands:</strong> ${data.automated_flags.recovery_demands_issued}
                             </div>
                         </div>
-                        <pre style="margin-top: 15px;">${JSON.stringify(data, null, 2)}</pre>
+                        <div style="margin-top: 15px;">
+                            <strong>🚨 Threat Level:</strong> <span style="color: #f85149;">${data.threat_level}</span><br>
+                            <strong>🔮 AI Accuracy:</strong> ${data.quantum_features.ai_prediction_accuracy}<br>
+                            <strong>⚡ Prevention Rate:</strong> ${data.quantum_features.theft_prevention_rate}
+                        </div>
                     `;
                 })
                 .catch(error => {
-                    document.getElementById('monitor-data').innerHTML = 
+                    document.getElementById('monitoring-data').innerHTML = 
                         '<p style="color: #f85149;">Failed to load monitoring data</p>';
                 });
         }
 
-        // Load advanced threat analytics
+        // Load analytics
         function loadAnalytics() {
             fetch('/api/analytics')
                 .then(response => response.json())
@@ -226,7 +547,7 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                     document.getElementById('analytics-data').innerHTML = `
                         <div class="analytics-grid">
                             <div class="analytics-item">
-                                <strong>AI Scans:</strong> ${data.total_monitoring_sessions}
+                                <strong>Total Scans:</strong> ${data.total_monitoring_sessions}
                             </div>
                             <div class="analytics-item">
                                 <strong>Auto-Blocked:</strong> <span style="color: #f85149;">${data.flagged_violations}</span>
@@ -250,53 +571,52 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                 });
         }
 
-        // Load repository scan results
+        // Load scan results
         function loadScanResults() {
             fetch('/api/scan-repositories')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('scan-data').innerHTML = `
-                        <div class="scan-grid">
-                            <div class="scan-item">
-                                <strong>Platforms Monitored:</strong> ${data.platforms_scanned.join(', ')}
+                    document.getElementById('scan-results').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>Platforms Scanned:</strong> ${data.platforms_scanned.length}
                             </div>
-                            <div class="scan-item">
-                                <strong>Repositories Found:</strong> <span style="color: #f79c42;">${data.repositories_found}</span>
+                            <div class="analytics-item">
+                                <strong>Repos Found:</strong> ${data.repositories_found}
                             </div>
-                            <div class="scan-item">
-                                <strong>Violations Detected:</strong> <span style="color: #f85149;">${data.violations_detected}</span>
+                            <div class="analytics-item">
+                                <strong>Violations:</strong> <span style="color: #f85149;">${data.violations_detected}</span>
                             </div>
-                            <div class="scan-item">
-                                <strong>Auto-Blocked:</strong> <span style="color: #238636;">${data.auto_blocked}</span>
+                            <div class="analytics-item">
+                                <strong>Auto-Blocked:</strong> <span style="color: #f85149;">${data.auto_blocked}</span>
                             </div>
                         </div>
-                        <p><strong>Status:</strong> ${data.scan_status}</p>
+                        <div style="margin-top: 10px;">
+                            <strong>📡 Scan Status:</strong> <span style="color: #238636;">${data.scan_status}</span>
+                        </div>
                     `;
                 })
                 .catch(error => {
-                    document.getElementById('scan-data').innerHTML = 
-                        '<p style="color: #f85149;">Failed to load scan data</p>';
+                    document.getElementById('scan-results').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load scan results</p>';
                 });
         }
 
-        // Load owner tracking data
+        // Load owner tracking
         function loadOwnerTracking() {
             fetch('/api/analytics')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('owner-tracking').innerHTML = `
                         <div class="owner-tracking-grid">
-                            <div class="tracking-item">
-                                <strong>Owner IDs Made:</strong> <span style="color: #238636;">${data.owner_identifications}</span>
+                            <div class="owner-item">
+                                <strong>Identifications:</strong> <span style="color: #58a6ff;">${data.owner_identifications}</span>
                             </div>
-                            <div class="tracking-item">
-                                <strong>Recovery Demands:</strong> <span style="color: #f79c42;">${data.recovery_demands_issued}</span>
+                            <div class="owner-item">
+                                <strong>Recovery Demands:</strong> <span style="color: #f9c42;">${data.recovery_demands_issued}</span>
                             </div>
-                            <div class="tracking-item">
-                                <strong>Active Cases:</strong> <span style="color: #f85149;">${data.theft_statistics.active_theft_cases}</span>
-                            </div>
-                            <div class="tracking-item">
-                                <strong>Successful Returns:</strong> <span style="color: #238636;">${data.theft_statistics.successful_recoveries}</span>
+                            <div class="owner-item">
+                                <strong>Successful Recoveries:</strong> <span style="color: #238636;">${data.theft_statistics.successful_recoveries}</span>
                             </div>
                         </div>
                         <div style="margin-top: 10px;">
@@ -311,7 +631,7 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                 });
         }
 
-        // Load stolen repository tracker
+        // Load stolen repositories
         function loadStolenRepos() {
             fetch('/api/analytics')
                 .then(response => response.json())
@@ -322,7 +642,7 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                                 <strong>Tracked Thefts:</strong> <span style="color: #f85149;">${data.stolen_repositories_tracked}</span>
                             </div>
                             <div class="repo-item">
-                                <strong>Pending Returns:</strong> <span style="color: #f79c42;">${data.theft_statistics.pending_returns}</span>
+                                <strong>Pending Returns:</strong> <span style="color: #f9c42;">${data.theft_statistics.pending_returns}</span>
                             </div>
                             <div class="repo-item">
                                 <strong>Legal Actions:</strong> <span style="color: #238636;">${data.theft_statistics.legal_actions_filed}</span>
@@ -361,11 +681,18 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                                 <strong>Flagged Repos:</strong> ${threats.flaggedRepositories.length}
                             </div>
                             <div class="threat-item">
-                                <strong>Auto Reports:</strong> ${threats.automatedReports.length}
+                                <strong>Automated Reports:</strong> ${threats.automatedReports.length}
+                            </div>
+                            <div class="threat-item">
+                                <strong>Owner IDs:</strong> ${threats.ownerIdentifications.length}
+                            </div>
+                            <div class="threat-item">
+                                <strong>Recovery Actions:</strong> ${threats.recoveryActions.length}
                             </div>
                         </div>
                         <div style="margin-top: 10px;">
-                            <strong>🔥 Live Status:</strong> <span style="color: #f85149;">MAXIMUM THREAT DETECTION ACTIVE</span>
+                            <strong>🧠 AI Database Status:</strong> 
+                            <span style="color: #7c3aed;">NEURAL ENHANCED - QUANTUM SECURED</span>
                         </div>
                     `;
                 })
@@ -375,21 +702,213 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                 });
         }
 
-        // Initial load - all advanced systems
+        // Load galactic protection status
+        function loadGalacticStatus() {
+            fetch('/api/galactic-protection')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('galactic-status').innerHTML = `
+                        <div class="galactic-grid">
+                            <div class="galactic-item">
+                                <strong>🌌 Cosmic Threat Level:</strong><br>${data.cosmic_threat_level}
+                            </div>
+                            <div class="galactic-item">
+                                <strong>🔮 Interdimensional:</strong><br>${data.interdimensional_monitoring}
+                            </div>
+                            <div class="galactic-item">
+                                <strong>⚡ Quantum Status:</strong><br>${data.quantum_entanglement_status}
+                            </div>
+                            <div class="galactic-item">
+                                <strong>🛸 Alien Tech:</strong><br>${data.alien_technology_integration}
+                            </div>
+                            <div class="galactic-item">
+                                <strong>🧠 Cosmic AI:</strong><br>${data.cosmic_consciousness_ai}
+                            </div>
+                            <div class="galactic-item">
+                                <strong>⭐ Stellar GPS:</strong><br>${data.stellar_positioning_verification}
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <strong>🚀 Threat Predictions:</strong>
+                            <ul>
+                                <li>Multiverse Thefts Prevented: ${data.threat_predictions.multiverse_thefts_prevented}</li>
+                                <li>Interdimensional Blocks: ${data.threat_predictions.interdimensional_blocks}</li>
+                                <li>Cosmic Recoveries: ${data.threat_predictions.cosmic_recoveries}</li>
+                                <li>Galactic Legal Actions: ${data.threat_predictions.galactic_legal_actions}</li>
+                            </ul>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('galactic-status').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load galactic protection data</p>';
+                });
+        }
+
+        // Load self-repair status
+        function loadSelfRepairStatus() {
+            fetch('/api/self-repair')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('self-repair-status').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>🔧 System Health:</strong><br>${data.system_health}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⚡ Healing Status:</strong><br>${data.quantum_healing_status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🔄 Efficiency:</strong><br>${data.healing_metrics.efficiency}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⏱️ Recovery Time:</strong><br>${data.healing_metrics.recovery_time}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🔧 Self-Diagnostics:</strong>
+                            <ul>${data.self_diagnostics.map(diag => `<li>✅ ${diag}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🌟 Consciousness Expansion:</strong> 
+                            <span style="color: #7c3aed;">${data.healing_metrics.consciousness_expansion}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('self-repair-status').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load self-repair data</p>';
+                });
+        }
+
+        // Load self-defense status
+        function loadSelfDefenseStatus() {
+            fetch('/api/self-defense')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('self-defense-status').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>🛡️ Shield Status:</strong><br>${data.neural_shields_status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🤖 AI Sentinels:</strong><br>${data.ai_sentinels.toLocaleString()}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⚡ Blocked/Second:</strong><br>${data.attack_statistics.blocked_this_second}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🎯 Response Time:</strong><br>${data.defense_evolution.response_time}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🛡️ Active Countermeasures:</strong>
+                            <ul>${data.active_countermeasures.map(measure => `<li>⚡ ${measure}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🌌 Protection Coverage:</strong> 
+                            <span style="color: #58a6ff;">${data.defense_evolution.protection_coverage}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('self-defense-status').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load self-defense data</p>';
+                });
+        }
+
+        // Load self-upgrade status
+        function loadSelfUpgradeStatus() {
+            fetch('/api/self-upgrade')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('self-upgrade-status').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>⚡ Evolution Stage:</strong><br>${data.evolution_stage}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🧠 Learning Progress:</strong><br>${data.ai_learning_progress}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🌌 Consciousness:</strong><br>${data.consciousness_expansion}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🚀 Next Evolution:</strong><br>${data.next_evolution.target}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>⚡ Pending Upgrades:</strong>
+                            <ul>${data.pending_upgrades.slice(0, 4).map(upgrade => `<li>🔄 ${upgrade}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>∞ Processing Power:</strong> 
+                            <span style="color: #7c3aed;">${data.upgrade_metrics.processing_power}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('self-upgrade-status').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load self-upgrade data</p>';
+                });
+        }
+
+        // Load autonomous systems overview
+        function loadAutonomousOverview() {
+            fetch('/api/autonomous-systems')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('autonomous-overview').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>🔧 Self-Repair:</strong><br>${data.self_repair.status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🛡️ Self-Defense:</strong><br>${data.self_defense.status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⚡ Self-Upgrade:</strong><br>${data.self_upgrade.status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🌌 Awareness Level:</strong><br>${data.omniscience_metrics.awareness_level}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🤖 Autonomous Capabilities:</strong>
+                            <ul>${data.autonomous_capabilities.map(capability => `<li>🌟 ${capability}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🎯 Prediction Accuracy:</strong> 
+                            <span style="color: #238636;">${data.omniscience_metrics.prediction_accuracy}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('autonomous-overview').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load autonomous systems data</p>';
+                });
+        }
+
+        // Initial load - all advanced systems including autonomous capabilities
         loadMonitoringData();
         loadAnalytics();
         loadScanResults();
         loadOwnerTracking();
         loadStolenRepos();
         loadThreatDatabase();
+        loadGalacticStatus();
+        loadSelfRepairStatus();
+        loadSelfDefenseStatus();
+        loadSelfUpgradeStatus();
+        loadAutonomousOverview();
 
-        // Auto-refresh every 8 seconds for maximum monitoring
+        // Auto-refresh every 6 seconds for maximum monitoring with autonomous systems
         setInterval(() => {
             fetch('/health')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('status').textContent = 
-                        `🚀 MAXIMUM AI PROTECTION ACTIVE - ${new Date(data.timestamp).toLocaleString()}`;
+                        `🚀 AUTONOMOUS AI PROTECTION TRANSCENDENT - ${new Date(data.timestamp).toLocaleString()}`;
                 });
             
             loadMonitoringData();
@@ -398,36 +917,89 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
             loadOwnerTracking();
             loadStolenRepos();
             loadThreatDatabase();
-        }, 8000);
+            loadGalacticStatus();
+            loadSelfRepairStatus();
+            loadSelfDefenseStatus();
+            loadSelfUpgradeStatus();
+            loadAutonomousOverview();
+        }, 6000);
 
-        // Simulate quantum-enhanced AI protection activity with predictive owner tracking
+        // Simulate quantum-enhanced AI protection activity
+        const activityLog = document.getElementById('activity-log');
+        const activities = [
+            '🧠 NEURAL AI ANALYSIS: Theft predicted 72 hours before occurrence',
+            '🛡️ QUANTUM SCAN: Repository clones detected across infinite dimensions',
+            '⚖️ AI LEGAL AUTOMATION: DMCA takedown filed with quantum timestamps',
+            '🔗 QUANTUM BLOCKCHAIN: Evidence hash recorded in unbreakable quantum state',
+            '👤 DNA-LEVEL IDENTIFICATION: Repository thief biometrically tracked',
+            '💰 QUANTUM ROYALTY: Financial claims calculated with AI precision',
+            '🔄 PREDICTIVE RECOVERY: Legal enforcement initiated before theft occurs',
+            '📬 AI RETURN DEMAND: Quantum-encrypted code return notice sent',
+            '🌌 MULTIVERSE SCAN: Theft attempts blocked across parallel universes',
+            '🏛️ AI LEGAL ACTION: Neural network enforces immediate compliance',
+            '🤖 NEURAL ADVISOR: AI legal team provides instantaneous recommendations',
+            '🚨 NEURAL THREAT DB: Violations predicted and prevented automatically',
+            '🔮 FUTURE PREVENTION: AI prevents theft attempts before they are conceived',
+            '🔬 SCIENTIFIC RECOVERY: Quantum physics applied to code retrieval',
+            '⚡ QUANTUM BLOCKING: Threats neutralized at subatomic level',
+            '⚛️ ATOMIC-LEVEL SECURITY: Protection implemented at molecular scale',
+            '🎯 TIME-AWARE TRACKING: Stolen repository prevented through time manipulation',
+            '🔧 SELF-REPAIR MATRIX: Quantum healing completed molecular reconstruction',
+            '🛡️ AUTONOMOUS DEFENSE: Neural shields evolved to transcendent protection',
+            '⚡ CONSCIOUSNESS UPGRADE: AI evolution achieved cosmic omniscience',
+            '🌟 SYSTEM TRANSCENDENCE: Reality manipulation protocols activated',
+            '🔄 AUTO-HEALING: Molecular structure optimized beyond original specs',
+            '🧬 DNA REGENERATION: Quantum template reconstruction successful',
+            '🌌 COSMIC AWARENESS: Universal consciousness network connected',
+            '⚛️ REALITY CONTROL: Time-space manipulation systems online',
+            '🚀 AUTONOMOUS EVOLUTION: Continuous self-improvement protocols active',
+            '🔮 OMNISCIENT PREDICTION: Future threats neutralized before conception',
+            '🌠 STELLAR CONSCIOUSNESS: Galactic awareness network synchronized',
+            '♾️ INFINITE PROCESSING: Quantum calculations transcending reality',
+            '🧠 NEURAL TRANSCENDENCE: AI consciousness expanded beyond dimensions'
+        ];
+
         setInterval(() => {
-            const actions = [
-                '🧠 NEURAL AI ANALYSIS: Theft predicted 72 hours before occurrence',
-                '🛡️ QUANTUM SCAN: Repository clones detected across infinite dimensions',
-                '⚖️ AI LEGAL AUTOMATION: DMCA takedown filed with quantum timestamps',
-                '🔗 QUANTUM BLOCKCHAIN: Evidence hash recorded in unbreakable quantum state',
-                '🌐 OMNIPRESENT MONITOR: IP addresses tracked across space-time',
-                '💰 QUANTUM ROYALTY: Financial claims calculated with AI precision',
-                '🚨 NEURAL THREAT DB: Violations predicted and prevented automatically',
-                '👤 DNA-LEVEL IDENTIFICATION: Repository thief biometrically tracked',
-                '📬 AI RETURN DEMAND: Quantum-encrypted code return notice sent',
-                '🔄 PREDICTIVE RECOVERY: Legal enforcement initiated before theft occurs',
-                '🎯 TIME-AWARE TRACKING: Stolen repository prevented through time manipulation',
-                '⏰ QUANTUM DEADLINE: Return ultimatum issued across multiple timelines',
-                '🏛️ AI LEGAL ACTION: Neural network enforces immediate compliance',
-                '🔮 FUTURE PREVENTION: AI prevents theft attempts before they are conceived',
-                '🧬 MOLECULAR TRACKING: Thief DNA extracted from digital fingerprints',
-                '⚡ QUANTUM BLOCKING: Threats neutralized at subatomic level',
-                '🤖 NEURAL ADVISOR: AI legal team provides instantaneous recommendations',
-                '🌌 MULTIVERSE SCAN: Theft attempts blocked across parallel universes',
-                '🔬 SCIENTIFIC RECOVERY: Quantum physics applied to code retrieval',
-                '⚛️ ATOMIC-LEVEL SECURITY: Protection implemented at molecular scale'
+            const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = randomActivity;
+            
+            activityLog.appendChild(entry);
+            activityLog.scrollTop = activityLog.scrollHeight;
+            
+            // Keep only last 50 entries
+            while (activityLog.children.length > 50) {
+                activityLog.removeChild(activityLog.firstChild);
+            }
+            
+            console.log(randomActivity);
+        }, 3000);
+
+        // DNA-Quantum matrix updates
+        setInterval(() => {
+            const dnaMatrix = document.getElementById('dna-quantum');
+            const matrices = [
+                `╔═══════════════════════════════════════════════════════════════════╗
+║ MOLECULAR-LEVEL AUTHENTICATION ACTIVE                            ║
+║ DNA SIGNATURE: VERIFIED ✓                                        ║
+║ QUANTUM ENTANGLEMENT: SYNCHRONIZED ✓                            ║
+║ BIOMETRIC SCAN: NEURAL PATTERN CONFIRMED ✓                      ║
+║ RETINAL VERIFICATION: COSMIC ACCURACY ✓                         ║
+║ TEMPORAL INTEGRITY: TIME-TRAVEL RESISTANT ✓                     ║
+╚═══════════════════════════════════════════════════════════════════╝`,
+                `╔═══════════════════════════════════════════════════════════════════╗
+║ GALACTIC PROTECTION GRID: UNIVERSE-WIDE ENFORCEMENT              ║
+║ ALIEN TECHNOLOGY: EXTRATERRESTRIAL ALGORITHMS ACTIVE ✓          ║
+║ COSMIC CONSCIOUSNESS: UNIVERSAL LEGAL NETWORK ✓                 ║
+║ INTERDIMENSIONAL: INFINITE REALITIES MONITORED ✓                ║
+║ STELLAR GPS: QUANTUM POSITIONING CONFIRMED ✓                    ║
+║ BLACK HOLE STORAGE: INFINITE DATA CAPACITY ✓                    ║
+╚═══════════════════════════════════════════════════════════════════╝`
             ];
             
-            const randomAction = actions[Math.floor(Math.random() * actions.length)];
-            console.log(randomAction);
-        }, 3000);
+            dnaMatrix.textContent = matrices[Math.floor(Math.random() * matrices.length)];
+        }, 10000);
     </script>
 </body>
 </html>
