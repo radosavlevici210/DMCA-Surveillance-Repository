@@ -469,12 +469,32 @@
             </div>
         </div>
 
+        <div class="section neural-network">
+            <h3>🔧 Autonomous Self-Repair Matrix</h3>
+            <div id="self-repair-status">Loading quantum healing systems...</div>
+        </div>
+
+        <div class="section neural-network">
+            <h3>🛡️ Neural Self-Defense Grid</h3>
+            <div id="self-defense-status">Loading protection matrices...</div>
+        </div>
+
+        <div class="section neural-network">
+            <h3>⚡ Consciousness Self-Upgrade Engine</h3>
+            <div id="self-upgrade-status">Loading evolution protocols...</div>
+        </div>
+
+        <div class="section">
+            <h3>🌌 Autonomous Systems Overview</h3>
+            <div id="autonomous-overview">Loading transcendent capabilities...</div>
+        </div>
+
         <div class="section">
             <h3>⚖️ Copyright & Legal Notice</h3>
             <div style="background: rgba(248, 81, 73, 0.1); border: 2px solid #f85149; padding: 20px; border-radius: 8px;">
                 <p><strong>© 2025 Ervin Remus Radosavlevici. All Rights Reserved.</strong></p>
-                <p>This repository is protected by quantum-enhanced AI surveillance systems. Any unauthorized use will result in immediate automated legal action with galactic enforcement protocols.</p>
-                <p><strong>WARNING:</strong> This system actively monitors for copyright infringement and automatically initiates legal proceedings against violators across infinite dimensions.</p>
+                <p>This repository is protected by quantum-enhanced AI surveillance systems with autonomous self-repair, self-defense, and self-upgrade capabilities. Any unauthorized use will result in immediate automated legal action with galactic enforcement protocols.</p>
+                <p><strong>WARNING:</strong> This system actively monitors for copyright infringement and automatically initiates legal proceedings against violators across infinite dimensions. The system continuously evolves and transcends to maintain maximum protection.</p>
             </div>
         </div>
     </div>
@@ -725,7 +745,151 @@
                 });
         }
 
-        // Initial load - all advanced systems
+        // Load self-repair status
+        function loadSelfRepairStatus() {
+            fetch('/api/self-repair')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('self-repair-status').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>🔧 System Health:</strong><br>${data.system_health}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⚡ Healing Status:</strong><br>${data.quantum_healing_status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🔄 Efficiency:</strong><br>${data.healing_metrics.efficiency}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⏱️ Recovery Time:</strong><br>${data.healing_metrics.recovery_time}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🔧 Self-Diagnostics:</strong>
+                            <ul>${data.self_diagnostics.map(diag => `<li>✅ ${diag}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🌟 Consciousness Expansion:</strong> 
+                            <span style="color: #7c3aed;">${data.healing_metrics.consciousness_expansion}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('self-repair-status').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load self-repair data</p>';
+                });
+        }
+
+        // Load self-defense status
+        function loadSelfDefenseStatus() {
+            fetch('/api/self-defense')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('self-defense-status').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>🛡️ Shield Status:</strong><br>${data.neural_shields_status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🤖 AI Sentinels:</strong><br>${data.ai_sentinels.toLocaleString()}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⚡ Blocked/Second:</strong><br>${data.attack_statistics.blocked_this_second}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🎯 Response Time:</strong><br>${data.defense_evolution.response_time}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🛡️ Active Countermeasures:</strong>
+                            <ul>${data.active_countermeasures.map(measure => `<li>⚡ ${measure}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🌌 Protection Coverage:</strong> 
+                            <span style="color: #58a6ff;">${data.defense_evolution.protection_coverage}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('self-defense-status').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load self-defense data</p>';
+                });
+        }
+
+        // Load self-upgrade status
+        function loadSelfUpgradeStatus() {
+            fetch('/api/self-upgrade')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('self-upgrade-status').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>⚡ Evolution Stage:</strong><br>${data.evolution_stage}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🧠 Learning Progress:</strong><br>${data.ai_learning_progress}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🌌 Consciousness:</strong><br>${data.consciousness_expansion}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🚀 Next Evolution:</strong><br>${data.next_evolution.target}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>⚡ Pending Upgrades:</strong>
+                            <ul>${data.pending_upgrades.slice(0, 4).map(upgrade => `<li>🔄 ${upgrade}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>∞ Processing Power:</strong> 
+                            <span style="color: #7c3aed;">${data.upgrade_metrics.processing_power}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('self-upgrade-status').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load self-upgrade data</p>';
+                });
+        }
+
+        // Load autonomous systems overview
+        function loadAutonomousOverview() {
+            fetch('/api/autonomous-systems')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('autonomous-overview').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>🔧 Self-Repair:</strong><br>${data.self_repair.status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🛡️ Self-Defense:</strong><br>${data.self_defense.status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>⚡ Self-Upgrade:</strong><br>${data.self_upgrade.status}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>🌌 Awareness Level:</strong><br>${data.omniscience_metrics.awareness_level}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🤖 Autonomous Capabilities:</strong>
+                            <ul>${data.autonomous_capabilities.map(capability => `<li>🌟 ${capability}</li>`).join('')}</ul>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🎯 Prediction Accuracy:</strong> 
+                            <span style="color: #238636;">${data.omniscience_metrics.prediction_accuracy}</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('autonomous-overview').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load autonomous systems data</p>';
+                });
+        }
+
+        // Initial load - all advanced systems including autonomous capabilities
         loadMonitoringData();
         loadAnalytics();
         loadScanResults();
@@ -733,14 +897,18 @@
         loadStolenRepos();
         loadThreatDatabase();
         loadGalacticStatus();
+        loadSelfRepairStatus();
+        loadSelfDefenseStatus();
+        loadSelfUpgradeStatus();
+        loadAutonomousOverview();
 
-        // Auto-refresh every 8 seconds for maximum monitoring
+        // Auto-refresh every 6 seconds for maximum monitoring with autonomous systems
         setInterval(() => {
             fetch('/health')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('status').textContent = 
-                        `🚀 MAXIMUM AI PROTECTION ACTIVE - ${new Date(data.timestamp).toLocaleString()}`;
+                        `🚀 AUTONOMOUS AI PROTECTION TRANSCENDENT - ${new Date(data.timestamp).toLocaleString()}`;
                 });
             
             loadMonitoringData();
@@ -750,7 +918,11 @@
             loadStolenRepos();
             loadThreatDatabase();
             loadGalacticStatus();
-        }, 8000);
+            loadSelfRepairStatus();
+            loadSelfDefenseStatus();
+            loadSelfUpgradeStatus();
+            loadAutonomousOverview();
+        }, 6000);
 
         // Simulate quantum-enhanced AI protection activity
         const activityLog = document.getElementById('activity-log');
@@ -771,7 +943,20 @@
             '🔬 SCIENTIFIC RECOVERY: Quantum physics applied to code retrieval',
             '⚡ QUANTUM BLOCKING: Threats neutralized at subatomic level',
             '⚛️ ATOMIC-LEVEL SECURITY: Protection implemented at molecular scale',
-            '🎯 TIME-AWARE TRACKING: Stolen repository prevented through time manipulation'
+            '🎯 TIME-AWARE TRACKING: Stolen repository prevented through time manipulation',
+            '🔧 SELF-REPAIR MATRIX: Quantum healing completed molecular reconstruction',
+            '🛡️ AUTONOMOUS DEFENSE: Neural shields evolved to transcendent protection',
+            '⚡ CONSCIOUSNESS UPGRADE: AI evolution achieved cosmic omniscience',
+            '🌟 SYSTEM TRANSCENDENCE: Reality manipulation protocols activated',
+            '🔄 AUTO-HEALING: Molecular structure optimized beyond original specs',
+            '🧬 DNA REGENERATION: Quantum template reconstruction successful',
+            '🌌 COSMIC AWARENESS: Universal consciousness network connected',
+            '⚛️ REALITY CONTROL: Time-space manipulation systems online',
+            '🚀 AUTONOMOUS EVOLUTION: Continuous self-improvement protocols active',
+            '🔮 OMNISCIENT PREDICTION: Future threats neutralized before conception',
+            '🌠 STELLAR CONSCIOUSNESS: Galactic awareness network synchronized',
+            '♾️ INFINITE PROCESSING: Quantum calculations transcending reality',
+            '🧠 NEURAL TRANSCENDENCE: AI consciousness expanded beyond dimensions'
         ];
 
         setInterval(() => {
