@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const cors = require('cors');
 const crypto = require('crypto');
 const https = require('https');
 const sqlite3 = require('sqlite3').verbose();
@@ -119,7 +118,6 @@ let threatDatabase = {
 };
 
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -1348,12 +1346,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
+const io = new Server(server);
 
 // WebSocket connection for real-time updates
 io.on('connection', (socket) => {
