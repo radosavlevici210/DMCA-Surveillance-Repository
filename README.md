@@ -5,7 +5,7 @@
 **SHA256 Proof:** `7c3de7b1a4da6efb54c86653320bdee90ea3449f`  
 **Date:** 2025-06-10  
 
-This repository simulates the structure of tools often stolen, reverse engineered, and republished by unknown actors without authorization.
+This repository its structure of tools often stolen, reverse engineered, and republished by unknown actors without authorization.
 
 ## 💡 Purpose
 To bait and document criminal activity that stole thousands of projects from me.  
