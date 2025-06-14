@@ -1,11 +1,11 @@
-modules = ["cpp-clang14", "python-3.12", "nodejs-20"]
-run = "npm run start"
+modules = ["web", "nodejs-18", "cpp-clang14", "python-3.12"]
+run = "npm run dev"
 
 [nix]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "npm run start"]
+run = ["sh", "-c", "npm run dev"]
 
 [workflows]
 runButton = "Production Server"
