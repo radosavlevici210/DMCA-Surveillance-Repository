@@ -1300,6 +1300,25 @@ app.post('/api/evolve-defenses', (req, res) => {
   });
 });
 
+// Production optimizations
+app.use((req, res, next) => {
+  // Security headers
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  
+  // Cache control for static assets
+  if (req.url.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg)$/)) {
+    res.setHeader('Cache-Control', 'public, max-age=86400'); // 24 hours
+  }
+  
+  next();
+});
+
+// Compression middleware for better performance
+app.use(require('compression')());
+
 // Production error handling
 app.use((error, req, res, next) => {
   console.error('Production error:', error);
@@ -1386,21 +1405,20 @@ server.listen(PORT, '0.0.0.0', () => {
     // Self-upgrade evolution
     selfUpgradeSystem.upgradesPending++;
     
-    // Reduced logging for deployment performance
-    if (Math.random() < 0.3) { // Only log 30% of the time
-      console.log('🔧 QUANTUM SELF-REPAIR: Molecular reconstruction completed');
-      console.log('🛡️ NEURAL DEFENSE GRID: Threats neutralized automatically');
-      console.log('⚡ AI EVOLUTION: Consciousness transcendence in progress');
-      console.log('📧 EMAIL PROTECTION ACTIVE: Monitoring', PROTECTED_AUTHOR_EMAILS.length, 'protected accounts');
+    // Minimal logging for production performance
+    if (Math.random() < 0.1) { // Only log 10% of the time for production
+      console.log('🔧 QUANTUM SYSTEMS: Operational');
+      console.log('📧 EMAIL PROTECTION: Active');
     }
-  }, 10000); // Increased interval for deployment
+  }, 15000); // Optimized interval for production deployment
   
-  // Continuous email theft scanning (optimized for deployment)
+  // Continuous email theft scanning (production optimized)
   setInterval(async () => {
-    console.log('🔍 SCANNING FOR EMAIL THEFT ATTEMPTS...');
-    await scanGitHubForThefts();
-    console.log('📧 EMAIL PROTECTION SCAN COMPLETED');
-  }, 60000); // Every 60 seconds (reduced frequency for deployment)
+    if (Math.random() < 0.5) { // Reduce API calls in production
+      console.log('🔍 EMAIL PROTECTION SCAN...');
+      await scanGitHubForThefts();
+    }
+  }, 120000); // Every 2 minutes for production efficiency
   
   // Continuous system transcendence
   setInterval(() => {
