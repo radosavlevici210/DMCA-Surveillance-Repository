@@ -4,9 +4,83 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const crypto = require('crypto');
+const https = require('https');
+const sqlite3 = require('sqlite3').verbose();
+const nodemailer = require('nodemailer');
+const axios = require('axios');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Initialize SQLite database for real data persistence
+const db = new sqlite3.Database('./monitoring.db', (err) => {
+  if (err) {
+    console.error('Database connection error:', err.message);
+  } else {
+    console.log('🗄️ Connected to SQLite database');
+    initializeDatabase();
+  }
+});
+
+// Real email transporter for notifications
+const emailTransporter = nodemailer.createTransporter({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER || 'radosavlevici210@icloud.com',
+    pass: process.env.EMAIL_PASS || 'app-specific-password'
+  }
+});
+
+// Initialize database tables
+function initializeDatabase() {
+  const tables = [
+    `CREATE TABLE IF NOT EXISTS threats (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      timestamp TEXT NOT NULL,
+      type TEXT NOT NULL,
+      repository_url TEXT,
+      ip_address TEXT,
+      user_agent TEXT,
+      status TEXT DEFAULT 'ACTIVE',
+      evidence TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )`,
+    `CREATE TABLE IF NOT EXISTS legal_actions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      threat_id INTEGER,
+      action_type TEXT NOT NULL,
+      status TEXT DEFAULT 'PENDING',
+      filed_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+      dmca_id TEXT,
+      response_received BOOLEAN DEFAULT FALSE,
+      FOREIGN KEY (threat_id) REFERENCES threats (id)
+    )`,
+    `CREATE TABLE IF NOT EXISTS monitoring_sessions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      session_id TEXT UNIQUE,
+      start_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+      end_time DATETIME,
+      threats_detected INTEGER DEFAULT 0,
+      actions_taken INTEGER DEFAULT 0
+    )`,
+    `CREATE TABLE IF NOT EXISTS repository_tracking (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      original_repo TEXT NOT NULL,
+      stolen_repo TEXT NOT NULL,
+      thief_username TEXT,
+      platform TEXT,
+      detection_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+      recovery_status TEXT DEFAULT 'PENDING',
+      legal_status TEXT DEFAULT 'INITIATED'
+    )`
+  ];
+  
+  tables.forEach(query => {
+    db.run(query, (err) => {
+      if (err) console.error('Table creation error:', err.message);
+    });
+  });
+}
 
 // Quantum-Enhanced Advanced monitoring storage with AI-powered owner tracking
 let threatDatabase = {
@@ -62,10 +136,83 @@ app.get('/api/info', (req, res) => {
   }
 });
 
-// Advanced monitoring endpoint with AI-powered threat detection
-app.get('/api/monitor', (req, res) => {
+// Real GitHub API integration for repository monitoring
+async function scanGitHubForThefts() {
+  try {
+    const response = await axios.get('https://api.github.com/search/repositories', {
+      params: {
+        q: 'Ervin Remus Radosavlevici OR radosavlevici210@icloud.com',
+        sort: 'updated',
+        order: 'desc'
+      },
+      headers: {
+        'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+        'User-Agent': 'DMCA-Protection-System'
+      }
+    });
+    
+    return response.data.items || [];
+  } catch (error) {
+    console.error('GitHub API error:', error.message);
+    return [];
+  }
+}
+
+// Real IP geolocation lookup
+async function getLocationFromIP(ip) {
+  try {
+    const response = await axios.get(`http://ip-api.com/json/${ip}`);
+    return response.data;
+  } catch (error) {
+    console.error('Geolocation error:', error.message);
+    return null;
+  }
+}
+
+// Real email notification system
+async function sendLegalNotification(threat) {
+  const mailOptions = {
+    from: 'radosavlevici210@icloud.com',
+    to: 'legal-team@company.com',
+    subject: `DMCA Violation Detected - Case ${threat.id}`,
+    html: `
+      <h2>🚨 Copyright Violation Detected</h2>
+      <p><strong>Repository:</strong> ${threat.repository_url}</p>
+      <p><strong>IP Address:</strong> ${threat.ip_address}</p>
+      <p><strong>Detection Time:</strong> ${threat.timestamp}</p>
+      <p><strong>Evidence Hash:</strong> ${threat.evidence}</p>
+      <p>Immediate action required for DMCA enforcement.</p>
+    `
+  };
+  
+  try {
+    await emailTransporter.sendMail(mailOptions);
+    console.log('📧 Legal notification sent successfully');
+    return true;
+  } catch (error) {
+    console.error('Email error:', error.message);
+    return false;
+  }
+}
+
+// Advanced monitoring endpoint with real database integration
+app.get('/api/monitor', async (req, res) => {
   const currentTime = new Date().toISOString();
   const sessionId = crypto.randomUUID();
+  
+  // Real database queries
+  const threatCount = await new Promise((resolve) => {
+    db.get('SELECT COUNT(*) as count FROM threats WHERE date(created_at) = date("now")', 
+      (err, row) => resolve(row ? row.count : 0));
+  });
+  
+  const legalActions = await new Promise((resolve) => {
+    db.get('SELECT COUNT(*) as count FROM legal_actions WHERE date(filed_date) = date("now")', 
+      (err, row) => resolve(row ? row.count : 0));
+  });
+  
+  // Real GitHub monitoring
+  const githubRepos = await scanGitHubForThefts();
   
   // Simulate advanced threat detection with owner tracking
   const advancedThreats = {
@@ -154,8 +301,8 @@ app.get('/api/monitor', (req, res) => {
   res.json(monitorData);
 });
 
-// Advanced automated theft detection and blocking system
-app.post('/api/report-theft', (req, res) => {
+// Real threat reporting with database persistence and notifications
+app.post('/api/report-theft', async (req, res) => {
   const { repository_url, violation_type, evidence, user_agent, ip_address } = req.body;
   
   const report = {
@@ -172,6 +319,37 @@ app.post('/api/report-theft', (req, res) => {
     blockchain_logged: true,
     severity_level: 'MAXIMUM'
   };
+  
+  // Store in real database
+  const threatId = await new Promise((resolve, reject) => {
+    db.run(`INSERT INTO threats (timestamp, type, repository_url, ip_address, user_agent, evidence)
+            VALUES (?, ?, ?, ?, ?, ?)`,
+      [report.timestamp, report.violation_type, repository_url, ip_address, user_agent, evidence],
+      function(err) {
+        if (err) reject(err);
+        else resolve(this.lastID);
+      });
+  });
+  
+  // Create legal action record
+  await new Promise((resolve) => {
+    db.run(`INSERT INTO legal_actions (threat_id, action_type, dmca_id)
+            VALUES (?, ?, ?)`,
+      [threatId, 'DMCA_TAKEDOWN', report.report_id],
+      () => resolve());
+  });
+  
+  // Send real email notification
+  await sendLegalNotification({
+    id: threatId,
+    repository_url,
+    ip_address,
+    timestamp: report.timestamp,
+    evidence
+  });
+  
+  // Get real location data
+  const locationData = await getLocationFromIP(ip_address);
   
   // Add to threat database
   threatDatabase.detectedThefts.push(report);
@@ -804,9 +982,78 @@ app.post('/api/evolve-defenses', (req, res) => {
   });
 });
 
-// Start server with autonomous systems
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 DMCA QUANTUM SURVEILLANCE REPOSITORY - AUTONOMOUS SYSTEMS ACTIVE`);
+// Production error handling
+app.use((error, req, res, next) => {
+  console.error('Production error:', error);
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'production' ? 'Server error' : error.message
+  });
+});
+
+// Real-world webhook for GitHub notifications
+app.post('/api/webhook/github', express.raw({type: 'application/json'}), async (req, res) => {
+  const signature = req.headers['x-hub-signature-256'];
+  const payload = req.body;
+  
+  // Verify webhook signature (security)
+  const expectedSignature = crypto
+    .createHmac('sha256', process.env.GITHUB_WEBHOOK_SECRET || 'secret')
+    .update(payload)
+    .digest('hex');
+  
+  if (`sha256=${expectedSignature}` === signature) {
+    const event = JSON.parse(payload);
+    
+    // Process GitHub events for copyright monitoring
+    if (event.action === 'created' || event.action === 'forked') {
+      console.log('🔍 GitHub event detected:', event.repository.full_name);
+      
+      // Store in database for analysis
+      db.run(`INSERT INTO repository_tracking (original_repo, stolen_repo, thief_username, platform)
+              VALUES (?, ?, ?, ?)`,
+        ['ervin-remus-radosavlevici/original', event.repository.full_name, 
+         event.repository.owner.login, 'GitHub']);
+    }
+    
+    res.status(200).send('Webhook processed');
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
+
+// Real-time monitoring dashboard with WebSocket
+const http = require('http');
+const { Server } = require('socket.io');
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+// WebSocket connection for real-time updates
+io.on('connection', (socket) => {
+  console.log('🔌 Real-time monitoring client connected');
+  
+  // Send real-time threat updates
+  socket.emit('monitoring-status', {
+    status: 'CONNECTED',
+    timestamp: new Date().toISOString(),
+    message: 'Real-time DMCA monitoring active'
+  });
+  
+  socket.on('disconnect', () => {
+    console.log('🔌 Client disconnected');
+  });
+});
+
+// Start production server
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 DMCA PROTECTION SYSTEM - PRODUCTION ACTIVE`);
   console.log(`🔧 Self-Repair Matrix: QUANTUM HEALING ENGAGED`);
   console.log(`🛡️ Self-Defense Grid: MAXIMUM PROTECTION ACTIVE`);
   console.log(`⚡ Self-Upgrade Engine: CONTINUOUS EVOLUTION INITIATED`);
