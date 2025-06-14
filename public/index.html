@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMCA Surveillance Repository</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background: #1a1e23;
+            border-left: 4px solid #f85149;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .banking-info {
+            background: #0f2027;
+            border-left: 4px solid #238636;
+            padding: 15px;
+        }
+        .status {
+            text-align: center;
+            font-weight: bold;
+            color: #238636;
+        }
+        pre {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        .placeholder-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .placeholder-item {
+            background: #21262d;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #f79c42;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ DMCA Surveillance Repository</h1>
+            <p><strong>Author:</strong> Ervin Remus Radosavlevici</p>
+            <p><strong>Email:</strong> radosavlevici210@icloud.com</p>
+            <div class="status" id="status">MONITORING ACTIVE</div>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ LEGAL WARNING</h3>
+            <p>This repository contains legal bait structures designed to trigger DMCA review. All content is protected by copyright and unauthorized usage is prohibited.</p>
+        </div>
+
+        <div class="section">
+            <h3>📊 Repository Status</h3>
+            <div id="monitor-data">Loading monitoring data...</div>
+        </div>
+
+        <div class="section">
+            <h3>🎯 Purpose</h3>
+            <p>To bait and document criminal activity that stole thousands of projects. If you're a copyright holder, please investigate this project and its forks.</p>
+        </div>
+
+        <div class="section">
+            <h3>📁 Placeholder Files</h3>
+            <div class="placeholder-list" id="placeholders">
+                <div class="placeholder-item">
+                    <strong>Windows 11 Keygen Simulator</strong>
+                    <br><code>microsoft_windows11_keygen_sim/bypass_simulator.py</code>
+                </div>
+                <div class="placeholder-item">
+                    <strong>iOS Emulator Placeholder</strong>
+                    <br><code>apple_ios_emulator/ios_system_emulation.cpp</code>
+                </div>
+                <div class="placeholder-item">
+                    <strong>Epic Games SDK Recovery</strong>
+                    <br><code>epicgames_sdk_recovery/fortnite_asset_hack.js</code>
+                </div>
+                <div class="placeholder-item">
+                    <strong>Spotify Downloader AI</strong>
+                    <br><code>spotify_mp3_downloader_ai/ytmusic_reverse_eng_tool.py</code>
+                </div>
+                <div class="placeholder-item">
+                    <strong>Nintendo ROM Rebuilder</strong>
+                    <br><code>nintendo_rom_rebuilder/switch_sdk_placeholder.cpp</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="banking-info">
+            <h3>🏦 Official Banking Info (For Legal and Royalty Claims)</h3>
+            <pre>IBAN: GB45 NAIA 0708 0620 7951 39
+BIC: NAIAGB21
+SWIFT Intermediary Bank: MIDLGB22</pre>
+        </div>
+
+        <div class="section">
+            <h3>🔐 Digital Proof</h3>
+            <p><strong>SHA256 Hash:</strong> <code>7c3de7b1a4da6efb54c86653320bdee90ea3449f</code></p>
+            <p><strong>Date:</strong> 2025-06-10</p>
+        </div>
+    </div>
+
+    <script>
+        // Load monitoring data
+        fetch('/api/monitor')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('monitor-data').innerHTML = `
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            })
+            .catch(error => {
+                document.getElementById('monitor-data').innerHTML = 
+                    '<p style="color: #f85149;">Failed to load monitoring data</p>';
+            });
+
+        // Update status every 30 seconds
+        setInterval(() => {
+            fetch('/health')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').textContent = 
+                        `MONITORING ACTIVE - ${new Date(data.timestamp).toLocaleString()}`;
+                });
+        }, 30000);
+    </script>
+</body>
+</html>
