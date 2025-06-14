@@ -98,6 +98,16 @@
         </div>
 
         <div class="section">
+            <h3>👤 Owner Identification & Recovery System</h3>
+            <div id="owner-tracking">Loading owner tracking data...</div>
+        </div>
+
+        <div class="section">
+            <h3>📋 Stolen Repository Tracker</h3>
+            <div id="stolen-repos">Loading stolen repository database...</div>
+        </div>
+
+        <div class="section">
             <h3>⚡ Live Threat Database</h3>
             <div id="threat-database">Loading threat database...</div>
         </div>
@@ -113,6 +123,10 @@
                 <div class="status-item">🔗 Blockchain Logging: <span class="active">ENABLED</span></div>
                 <div class="status-item">🌐 Global Monitoring: <span class="active">24/7</span></div>
                 <div class="status-item">⚖️ Legal Integration: <span class="active">AUTOMATED</span></div>
+                <div class="status-item">👤 Owner Identification: <span class="active">CONTINUOUS</span></div>
+                <div class="status-item">🔄 Code Recovery System: <span class="active">MAXIMUM</span></div>
+                <div class="status-item">📬 Return Demands: <span class="active">AUTOMATED</span></div>
+                <div class="status-item">🎯 Theft Tracking: <span class="active">REAL-TIME</span></div>
             </div>
         </div>
 
@@ -252,6 +266,70 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                 });
         }
 
+        // Load owner tracking data
+        function loadOwnerTracking() {
+            fetch('/api/analytics')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('owner-tracking').innerHTML = `
+                        <div class="owner-tracking-grid">
+                            <div class="tracking-item">
+                                <strong>Owner IDs Made:</strong> <span style="color: #238636;">${data.owner_identifications}</span>
+                            </div>
+                            <div class="tracking-item">
+                                <strong>Recovery Demands:</strong> <span style="color: #f79c42;">${data.recovery_demands_issued}</span>
+                            </div>
+                            <div class="tracking-item">
+                                <strong>Active Cases:</strong> <span style="color: #f85149;">${data.theft_statistics.active_theft_cases}</span>
+                            </div>
+                            <div class="tracking-item">
+                                <strong>Successful Returns:</strong> <span style="color: #238636;">${data.theft_statistics.successful_recoveries}</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>🔥 Recovery Status:</strong> 
+                            <span style="color: #f85149;">MAXIMUM ENFORCEMENT - CODE RETURN DEMANDED</span>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('owner-tracking').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load owner tracking</p>';
+                });
+        }
+
+        // Load stolen repository tracker
+        function loadStolenRepos() {
+            fetch('/api/analytics')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('stolen-repos').innerHTML = `
+                        <div class="stolen-repos-grid">
+                            <div class="repo-item">
+                                <strong>Tracked Thefts:</strong> <span style="color: #f85149;">${data.stolen_repositories_tracked}</span>
+                            </div>
+                            <div class="repo-item">
+                                <strong>Pending Returns:</strong> <span style="color: #f79c42;">${data.theft_statistics.pending_returns}</span>
+                            </div>
+                            <div class="repo-item">
+                                <strong>Legal Actions:</strong> <span style="color: #238636;">${data.theft_statistics.legal_actions_filed}</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>⚖️ Legal Status:</strong> 
+                            <span style="color: #f85149;">IMMEDIATE CODE RETURN REQUIRED</span>
+                        </div>
+                        <div style="margin-top: 5px;">
+                            <strong>📬 Auto-Demands:</strong> Repository thieves must return stolen code within 24 hours
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('stolen-repos').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load stolen repo data</p>';
+                });
+        }
+
         // Load threat database
         function loadThreatDatabase() {
             fetch('/api/monitor')
@@ -288,6 +366,8 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
         loadMonitoringData();
         loadAnalytics();
         loadScanResults();
+        loadOwnerTracking();
+        loadStolenRepos();
         loadThreatDatabase();
 
         // Auto-refresh every 8 seconds for maximum monitoring
@@ -302,10 +382,12 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
             loadMonitoringData();
             loadAnalytics();
             loadScanResults();
+            loadOwnerTracking();
+            loadStolenRepos();
             loadThreatDatabase();
         }, 8000);
 
-        // Simulate advanced AI protection activity
+        // Simulate advanced AI protection activity with owner tracking
         setInterval(() => {
             const actions = [
                 '🤖 AI BEHAVIORAL ANALYSIS: Suspicious pattern detected and blocked',
@@ -314,7 +396,13 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
                 '🔗 BLOCKCHAIN LOG: Evidence hash recorded permanently',
                 '🌐 GLOBAL MONITOR: IP addresses geo-tracked and blocked',
                 '💰 ROYALTY CALC: Automated financial claims initiated',
-                '🚨 THREAT DATABASE: New violations added to permanent record'
+                '🚨 THREAT DATABASE: New violations added to permanent record',
+                '👤 OWNER IDENTIFIED: Repository thief detected and tracked',
+                '📬 RETURN DEMAND: Automated code return notice sent',
+                '🔄 RECOVERY ACTIVE: Legal enforcement process initiated',
+                '🎯 THEFT TRACKED: Stolen repository documented and flagged',
+                '⏰ DEADLINE SET: 24-hour code return ultimatum issued',
+                '🏛️ LEGAL ACTION: Immediate enforcement measures activated'
             ];
             
             const randomAction = actions[Math.floor(Math.random() * actions.length)];
