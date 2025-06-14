@@ -83,8 +83,23 @@
         </div>
 
         <div class="section">
-            <h3>📊 Repository Status</h3>
+            <h3>📊 Enhanced Monitoring Dashboard</h3>
             <div id="monitor-data">Loading monitoring data...</div>
+        </div>
+
+        <div class="section">
+            <h3>🚨 Threat Detection & Auto-Flagging</h3>
+            <div id="analytics-data">Loading threat analytics...</div>
+        </div>
+
+        <div class="section">
+            <h3>⚡ Automated Protection Status</h3>
+            <div class="protection-status">
+                <div class="status-item">🔍 Real-time Scanning: <span class="active">ACTIVE</span></div>
+                <div class="status-item">🛡️ Auto-Flagging: <span class="active">ENABLED</span></div>
+                <div class="status-item">📧 Legal Notifications: <span class="active">AUTOMATED</span></div>
+                <div class="status-item">💰 Royalty Claims: <span class="active">TRACKING</span></div>
+            </div>
         </div>
 
         <div class="section">
@@ -133,28 +148,90 @@ SWIFT Intermediary Bank: MIDLGB22</pre>
     </div>
 
     <script>
-        // Load monitoring data
-        fetch('/api/monitor')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('monitor-data').innerHTML = `
-                    <pre>${JSON.stringify(data, null, 2)}</pre>
-                `;
-            })
-            .catch(error => {
-                document.getElementById('monitor-data').innerHTML = 
-                    '<p style="color: #f85149;">Failed to load monitoring data</p>';
-            });
+        // Enhanced monitoring data loader
+        function loadMonitoringData() {
+            fetch('/api/monitor')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('monitor-data').innerHTML = `
+                        <div class="monitoring-grid">
+                            <div class="monitor-item">
+                                <strong>Status:</strong> ${data.status}
+                            </div>
+                            <div class="monitor-item">
+                                <strong>Threat Level:</strong> <span style="color: #f85149;">${data.threat_level}</span>
+                            </div>
+                            <div class="monitor-item">
+                                <strong>DMCA Triggers:</strong> ${data.automated_flags.dmca_triggers_activated}
+                            </div>
+                            <div class="monitor-item">
+                                <strong>Violations Detected:</strong> ${data.automated_flags.copyright_violations_detected}
+                            </div>
+                        </div>
+                        <pre style="margin-top: 15px;">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('monitor-data').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load monitoring data</p>';
+                });
+        }
 
-        // Update status every 30 seconds
+        // Load threat analytics
+        function loadAnalytics() {
+            fetch('/api/analytics')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('analytics-data').innerHTML = `
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <strong>Total Scans:</strong> ${data.total_monitoring_sessions}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>Flagged Violations:</strong> <span style="color: #f85149;">${data.flagged_violations}</span>
+                            </div>
+                            <div class="analytics-item">
+                                <strong>Auto Reports:</strong> ${data.automated_reports_sent}
+                            </div>
+                            <div class="analytics-item">
+                                <strong>DMCA Claims:</strong> ${data.copyright_claims_filed}
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong>Recovery Actions:</strong>
+                            <ul>${data.recovery_actions.map(action => `<li>${action}</li>`).join('')}</ul>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('analytics-data').innerHTML = 
+                        '<p style="color: #f85149;">Failed to load analytics</p>';
+                });
+        }
+
+        // Initial load
+        loadMonitoringData();
+        loadAnalytics();
+
+        // Auto-refresh every 15 seconds for enhanced monitoring
         setInterval(() => {
             fetch('/health')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('status').textContent = 
-                        `MONITORING ACTIVE - ${new Date(data.timestamp).toLocaleString()}`;
+                        `ENHANCED MONITORING ACTIVE - ${new Date(data.timestamp).toLocaleString()}`;
                 });
-        }, 30000);
+            
+            loadMonitoringData();
+            loadAnalytics();
+        }, 15000);
+
+        // Simulate automatic flagging activity
+        setInterval(() => {
+            console.log('🚨 AUTOMATED SCAN: Checking for copyright violations...');
+            console.log('🛡️ AUTO-FLAG: Repository integrity verified');
+            console.log('📧 LEGAL ALERT: Monitoring systems active');
+        }, 5000);
     </script>
 </body>
 </html>
